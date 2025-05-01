@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     // Stop and remove existing container if running
-                    sh '''
+                    bat '''
                         docker stop personal-portfolio || true
                         docker rm personal-portfolio || true
                         docker run -d --name personal-portfolio -p 80:80 personal-portfolio:latest
@@ -32,7 +32,7 @@ pipeline {
 
         stage('Clean Up Docker Cache') {
             steps {
-                sh 'docker system prune -f'
+                bat 'docker system prune -f'
             }
         }
     }
